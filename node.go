@@ -160,5 +160,5 @@ func scanNodeValue(parent *node, path string, value interface{}) *node {
 		n.children = scanNodeArray(n, path, v)
 		return n
 	}
-	panic("oops")
+	return nil
 }
