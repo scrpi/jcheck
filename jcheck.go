@@ -273,7 +273,7 @@ func IsNull() CheckFunc {
 }
 
 // ArrayLenEquals fails if the path is not an array type with a length matching
-// the provided n.e
+// the provided len
 func ArrayLenEquals(l int) CheckFunc {
 	return func(n *node) (string, bool) {
 		if n.typ != typeArray {
@@ -283,6 +283,62 @@ func ArrayLenEquals(l int) CheckFunc {
 			return fmt.Sprintf("ArrayLenEquals: len != %d", l), false
 		}
 		return "", true
+	}
+}
+
+// ArrayLenLT fails if the path is not an array type with a length less than
+// the provided len
+func ArrayLenLT(l int) CheckFunc {
+	return func(n *node) (string, bool) {
+		if n.typ != typeArray {
+			return "ArrayLenLT: not array type", false
+		}
+		if n.arrayLen < l {
+			return "", true
+		}
+		return fmt.Sprintf("ArrayLenLT: not less than %d", l), false
+	}
+}
+
+// ArrayLenLTE fails if the path is not an array type with a length less or
+// equal to than the provided len
+func ArrayLenLTE(l int) CheckFunc {
+	return func(n *node) (string, bool) {
+		if n.typ != typeArray {
+			return "ArrayLenLTE: not array type", false
+		}
+		if n.arrayLen <= l {
+			return "", true
+		}
+		return fmt.Sprintf("ArrayLenLTE: not less than or equal to %d", l), false
+	}
+}
+
+// ArrayLenGT fails if the path is not an array type with a length greater than
+// the provided len
+func ArrayLenGT(l int) CheckFunc {
+	return func(n *node) (string, bool) {
+		if n.typ != typeArray {
+			return "ArrayLenGT: not array type", false
+		}
+		if n.arrayLen > l {
+			return "", true
+		}
+		return fmt.Sprintf("ArrayLenGT: not greater than %d", l), false
+	}
+}
+
+// ArrayLenGTE fails if the path is not an array type with a length greater than
+// or equal to the provided len
+func ArrayLenGTE(l int) CheckFunc {
+	return func(n *node) (string, bool) {
+		if n.typ != typeArray {
+			return "ArrayLenGTE: not array type", false
+		}
+		if n.arrayLen >= l {
+			return "", true
+		}
+		return fmt.Sprintf("ArrayLenGTE: not greater than or equal to %d", l), false
 	}
 }
 
