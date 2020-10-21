@@ -8,7 +8,7 @@ Whitelist or blacklist behaviour can be described by passing `DefaultPermitted()
 
 JSON strings can be tested for equality or whether they have a suffix or prefix.
 
-JSON numbers have an assortmant of equality, greather than or less than operators. There is support for parsing of numbers from strings with suffixes e.g. '200K' => 200,000.
+JSON numbers have an assortment of equality, greater than or less than operators. There is support for parsing of numbers from strings with suffixes e.g. '200K' => 200,000.
 
 See [Documentation](https://godoc.org/github.com/scrpi)
 
