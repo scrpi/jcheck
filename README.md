@@ -23,13 +23,13 @@ go get github.com/scrpi/jcheck
 To construct a new JSONChecker:
 
 ```
-jc, err := NewJSONChecker()
+jc, err := NewJSONChecker(json)
 ```
 
-To construct a new JSONChecker with all nodes not permitted by default:
+To construct a new JSONChecker with all nodes not permitted by default (whitelist behaviour):
 
 ```
-jc, err := NewJSONChecker(DefaultNotPermitted())
+jc, err := NewJSONChecker(json, DefaultNotPermitted())
 ```
 
 Add rules:
